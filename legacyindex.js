@@ -37,7 +37,9 @@ for (let i = lastCombinationIndex; i < combinations.length; i++) {
     if (oldBackupJson.lastCharacterPrompts !== undefined && i === lastCombinationIndex) {
         characterPromptsString = oldBackupJson.lastCharacterPrompts;
     } else {
-        characterPromptsString = await generateCharacterPrompts(characterRace, characterClass, false, 3);
+        characterPromptsString = await generateCharacterPrompts(characterRace, characterClass, true, 1);
+        console.log("\u001b[1;90mSleeping for 30s ZzZzzZz...\u001b[0m");
+        await delay(30000);
     }
 
     // The result of the API call is a string, which will be split by line and moved to a new array
@@ -56,14 +58,12 @@ for (let i = lastCombinationIndex; i < combinations.length; i++) {
         // Sometimes the split returns empty strings
         if (characterPrompt != "") {
             // Sometimes the response enumerates the lines, and sometimes it doesn't.
-            if (characterPrompt.match(/\d+\.\s?/)) {
-                characterPrompt = characterPrompt.replace(/\d+\.\s?/, "");
+            if (characterPrompt.match(/\d+(\.|\))\s?/)) {
+                characterPrompt = characterPrompt.replace(/\d+(\.|\))\s?/, "");
             }
 
             // Sometimes the response is wrapped in quotation marks, and sometimes it doesn't.
-            if (characterPrompt.match(/\d+\.\s?/)) {
-                characterPrompt = characterPrompt.replace('"', "");
-            }
+            characterPrompt = characterPrompt.replace('"', "");
 
             // Write the current state to a file, so that the script can resume from where it left off if something stops it prematurely
             newBackupJson = {
@@ -80,10 +80,12 @@ for (let i = lastCombinationIndex; i < combinations.length; i++) {
             console.log(`\u001b[1;90m${characterPrompt}\u001b[0m`);
 
             const characterSpeechPattern = await generateCharacterDetails("speech", characterPrompt);
+            console.log("\u001b[1;90mSleeping for 30s ZzZzzZz...\u001b[0m");
+            await delay(30000);
             const characterCharacteristics = await generateCharacterDetails("characteristics", characterPrompt, characterSpeechPattern);
 
             // The API limits the requests to 3 per minute. This delay garantees the rate limit won't be reached
-            console.log("Sleeping for minute ZzZzzZz...");
+            console.log("\u001b[1;90mSleeping for minute ZzZzzZz...\u001b[0m");
             await delay(60000);
 
             const characterAppearance = await generateCharacterDetails("appearance", characterPrompt, characterSpeechPattern);
@@ -107,6 +109,7 @@ for (let i = lastCombinationIndex; i < combinations.length; i++) {
                     characteristics: characterCharacteristics,
                     appearance: characterAppearance,
                     connections: characterConnections,
+                    isNpc: true,
                 });
                 console.log(`\u001b[1;32mCREATED: ${characterName}, the ${characterRace} ${characterClass}\u001b[0m`);
                 console.groupEnd(`${characterName}`);
