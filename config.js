@@ -1,45 +1,36 @@
-//export const classes = ["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard", "Artificer"];
-export const classes = [
-    "Merchant",
-    "Blacksmith",
-    "Bowyer",
-    "Herbalist",
-    "Jester",
-    "Innkeeper",
-    "Carpenter",
-    "Lumberjack",
-    "Mason",
-    "Leatherworker",
-    "Tailor",
-    "Miller",
-    "Baker",
-    "Cook",
-    "Jeweler",
-    "Librarian",
-    "Astrologer",
-    "Cartographer",
-    "Sailor",
-    "Fisherman",
-    "Farmer",
-    "Beekeeper",
-    "Miner",
-    "Mayor",
-    "Noble",
-    "Historian",
-    "Butcher",
-    "Guild Master",
-    "Priest",
-    "Banker",
-    "Archaeologist",
-    "Crime Boss",
+/*
+I have organized races and classes in groups, so that it'a little more organized,
+and so that I can generate characters in "chunks". I select which groups I want to
+use by assigning them to the variables `races` and `classes`, which are exported 
+at the end of this file
+*/
+
+const commonClasses = [
+    "Barbarian",
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Fighter",
+    "Monk",
+    "Paladin",
+    "Ranger",
+    "Rogue",
+    "Sorcerer",
+    "Warlock",
+    "Wizard",
+    "Artificer",
 ];
-export const races = ["Dragonborn", "Dwarf", "Elf", "Gnome", "Half-Elf", "Half-Orc", "Halfling", "Human", "Tiefling", "Goliath"];
-
-const pathfinderClasses = ["Alchemist", "Investigator", "Magus", "Oracle", "Psychic", "Summoner", "Swashbuckler", "Thaumaturge", "Gunslinger"];
-const pathfinderRaces = ["Azarketi", "Leshy", "Fetchling", "Gnoll", "Grippli", "Kitsune", "Nagaji", "Ratfolk", "Vanara"];
-const dndRaces = ["Aarakocra", "Tortle", "Aasimar", "Firbolg", "Genasi (water, fire, earth or air)", "Bugbear", "Fairy", "Satyr"];
-const commonRaces = ["Goblin", "Kenku", "Kobold", "Hobgoblin", "Lizardfolk", "Orc", "Catfolk", "Warforged"];
-
+const pathfinderClasses = [
+    "Alchemist",
+    "Investigator",
+    "Magus",
+    "Oracle",
+    "Psychic",
+    "Summoner",
+    "Swashbuckler",
+    "Thaumaturge",
+    "Gunslinger",
+];
 const professions = [
     "Merchant",
     "Blacksmith",
@@ -77,3 +68,48 @@ const professions = [
     "Archaeologist",
     "Crime Boss",
 ];
+
+const commonRaces = [
+    "Dwarf",
+    "Elf",
+    "Gnome",
+    "Halfling",
+    "Human",
+    "Goblin",
+    "Kenku",
+    "Kobold",
+    "Hobgoblin",
+    "Lizardfolk",
+    "Orc",
+    "Catfolk",
+    "Warforged",
+];
+const pathfinderRaces = [
+    "Azarketi",
+    "Leshy",
+    "Fetchling",
+    "Gnoll",
+    "Grippli",
+    "Kitsune",
+    "Nagaji",
+    "Ratfolk",
+    "Vanara",
+];
+const dndRaces = [
+    "Goliath",
+    "Half-Elf",
+    "Half-Orc",
+    "Dragonborn",
+    "Aarakocra",
+    "Tortle",
+    "Aasimar",
+    "Firbolg",
+    "Genasi (water, fire, earth or air)",
+    "Bugbear",
+    "Fairy",
+    "Satyr",
+    "Tiefling",
+];
+
+export const races = commonRaces;
+export const classes = commonClasses;
