@@ -1,8 +1,7 @@
 import { generateCharacterPrompts, generateCharacterDetails } from "./lib/openAiConfig.js";
 import { pb } from "./lib/pocketbaseConfig.js";
 import fs from "fs/promises";
-import { classes, races } from "./config.js";
-import { delay } from "./utils.js";
+import { classes, races, numberOfResults } from "./config.js";
 const oldBackupJson = JSON.parse(await fs.readFile(new URL("./backup.json", import.meta.url)));
 
 let newBackupJson = {};
@@ -44,7 +43,7 @@ for (let i = lastCombinationIndex; i < combinations.length; i++) {
             characterRace,
             characterClass,
             false,
-            2
+            numberOfResults
         );
     }
 

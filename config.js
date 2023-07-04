@@ -2,7 +2,10 @@
 I have organized races and classes in groups, so that it'a little more organized,
 and so that I can generate characters in "chunks". I select which groups I want to
 use by assigning them to the variables `races` and `classes`, which are exported 
-at the end of this file
+at the end of this file. 
+
+You can also edit the number of characters per combination by changing the value of
+`numberOfResults` at the end of this file.
 */
 
 const commonClasses = [
@@ -113,3 +116,4 @@ const dndRaces = [
 
 export const races = commonRaces;
 export const classes = commonClasses;
+export const numberOfResults = 3;

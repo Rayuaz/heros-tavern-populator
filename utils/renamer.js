@@ -11,9 +11,12 @@ the script.
 
 */
 
-const backup = { data: [] };
+/* ---- Configuration ---- */
 const search = "search"; // The text to be replaced
 const replace = "replace"; // The replacement text
+/* -------- */
+
+const backup = { data: [] };
 const searchRegex = new RegExp(`\\b${search}\\b`, "gi");
 
 try {
